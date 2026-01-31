@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi，我是华中科技大学 电子信息与通信学院 大二在读生，目前是DianRobot的成员
+Hi，我是华中科技大学 电子信息与通信学院 大二在读生，目前是[DianRobot](https://dianrobot.github.io/)的成员
 
 
 我的研究领域包括：
