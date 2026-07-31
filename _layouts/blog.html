@@ -1,0 +1,96 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="/assets/css/papermod.css">
+</head>
+<body id="top">
+  <header>
+    <nav class="header-nav">
+      <div class="logo">
+        <a href="/blog/">Yuhang's Blog</a>
+      </div>
+      <ul class="menu">
+        <li><a href="/">主页</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+      <div class="logo-switches">
+        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
+          <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="24" width="24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="24" width="24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <main class="main">
+    <article class="post-single">
+      <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+          {{ page.date | date: "%Y年%m月%d日" }}
+          {% if page.tags.size > 0 %}
+          {% for tag in page.tags %}<a href="/blog/tags/#{{ tag }}">#{{ tag }}</a> {% endfor %}
+          {% endif %}
+        </div>
+      </header>
+      <div class="post-content md-content">
+        {{ content }}
+      </div>
+      <footer class="post-footer">
+        {% assign blog_posts = site.posts | where: "layout", "blog" %}
+        {% if blog_posts.size > 1 %}
+        <nav class="paginav">
+          {% for p in blog_posts %}
+          {% if p.url == page.url %}
+          {% assign prev = forloop.index | minus: 2 %}
+          {% assign next = forloop.index %}
+          {% if prev >= 0 %}
+          {% assign prev_post = blog_posts[prev] %}
+          <a class="prev" href="{{ prev_post.url | prepend: site.baseurl }}">
+            <span class="title">« 上一篇</span>
+            <span>{{ prev_post.title }}</span>
+          </a>
+          {% endif %}
+          {% if next < blog_posts.size %}
+          {% assign next_post = blog_posts[next] %}
+          <a class="next" href="{{ next_post.url | prepend: site.baseurl }}">
+            <span class="title">下一篇 »</span>
+            <span>{{ next_post.title }}</span>
+          </a>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </nav>
+        {% endif %}
+      </footer>
+    </article>
+  </main>
+  <footer class="footer">
+    <span><a href="/blog/">← 返回 Blog</a></span>
+  </footer>
+  <a href="#top" id="top-link" class="top-link hidden" aria-label="回到顶部">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="20" width="20">
+      <polyline points="6 2 1 7 6 12"></polyline>
+      <line x1="1" y1="7" x2="11" y2="7"></line>
+    </svg>
+  </a>
+  <script src="/assets/js/papermod-theme.js"></script>
+</body>
+</html>
