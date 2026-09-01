@@ -1,3 +1,8 @@
+---
+title: "实习小记"
+date: 2026-08-01
+tags: [思考]
+---
 ## How to Get Started with Embodied AI Research
 
 > 转载时间：2025-11-13
@@ -44,12 +49,11 @@
 - **首先把任务定义（task formulation）想清楚，而不是一开始就盯着模型**。在 CV 领域，研究者之所以可以直接关注模型，是因为任务往往已经被定义得很清晰，数据集也由他人整理好， 比如图像分类就是输入图片输出类别标签，检测就是输出四个数的 bounding box；
 
   但在具身智能中，如何合理地建模任务、确定目标与评价指标，往往比模型选择更为关键。说白了，你得知道你想让机器人学会什么样的技能，输入是啥，输出是啥，用的什么传感器？你所研究的问题是否在合理的 setting 下？有没有有可能通过更好的 setting 来解决问题（比如机器人头部相机对场景观测不全，那我们可以考虑加装腕部相机，或者使用鱼眼相机）
-
 - 必须认识到**用学习（learning）来解决机器人问题并不是理所当然的选择**。在许多场景中，传统的控制（Control）、规划（Planning）或优化方法（Optimization）依然高效且可靠，而学习方法更多是在任务复杂、环境多变(泛化性) 或缺乏解析建模手段时才展现优势。因此，做具身智能研究时，首先要想回答，为什么你研究的这件事传统 robotics 解决不了？为什么非得用 learning？
 
 ## 二、前置技能
 
-这些工具是一个当代 CS researcher 的必备技能（不局限于方向），主要学习资料可以参考 <https://missing-semester-cn.github.io/>
+这些工具是一个当代 CS researcher 的必备技能（不局限于方向），主要学习资料可以参考 [https://missing-semester-cn.github.io/](https://missing-semester-cn.github.io/)
 
 - Python, Conda and Pytorch
 - Linux Shell, Git, SSH
@@ -82,9 +86,9 @@ Berkeley 的 RL 课程，涵盖了 Imitation Learning，Online RL, Offline RL �
 
 IssacLab (Recommend)
 
-<https://isaac-sim.github.io/IsaacLab/main/index.html>
+[https://isaac-sim.github.io/IsaacLab/main/index.html](https://isaac-sim.github.io/IsaacLab/main/index.html)
 
-<https://playground.mujoco.org/>
+[https://playground.mujoco.org/](https://playground.mujoco.org/)
 
 ### 2. 机器人平台 (Robotic Platforms)
 
@@ -186,12 +190,11 @@ IssacLab (Recommend)
 该方向主要聚焦于 **小模型 (small-model)** 场景：给定一个特定任务，以及数量有限的专家轨迹数据集（比如 50 条轨迹），学习一个策略来模仿专家轨迹完成任务。能够在一定范围内实现泛化，例如在同一张桌面上对同一物体的不同初始位置泛化。
 
 - **传统方法**：[Behavior Cloning](https://cgi.cse.unsw.edu.au/~claude/papers/MI15.pdf)、[DAgger](https://arxiv.org/abs/1011.0686)
-
 - **当前主流方法**：[ACT](https://tonyzhaozh.github.io/aloha/)、[Diffusion Policy](https://diffusion-policy.cs.columbia.edu/)
 
   这些方法通过引入时序建模与生成式策略学习，有效提升了模仿学习在视觉控制任务中的表现。
 
-------
+---
 
 ### 2. Robot Foundation Model
 
@@ -204,7 +207,7 @@ IssacLab (Recommend)
 
 还有少量工作没有借助 VLM，单纯靠机器人数据做 scaling，代表有 RDT-1B 和 Large Behavior Model (LBM)
 
-------
+---
 
 ### 3. Sim-to-Real Reinforcement Learning (Distillation)
 
@@ -214,7 +217,7 @@ IssacLab (Recommend)
 
 核心思路通常包括 **策略蒸馏 (policy distillation)**、**域随机化 (domain randomization)** 与 **现实校准 (real calibration)** 等技术。
 
-------
+---
 
 ### 4. Real-World Reinforcement Learning
 
@@ -225,7 +228,7 @@ IssacLab (Recommend)
 - **从零开始的真实世界强化学习**：**Hil-Serl**
 - **基于 VLA 的真实世界微调 (Fine-tuning)**：部分近期工作尝试利用预训练 VLA 进行现实强化学习微调，但仍处于早期探索阶段。
 
-------
+---
 
 ### 5. World Models
 
@@ -254,13 +257,11 @@ IssacLab (Recommend)
   - **末端操作设备**：如 *Space Mouse*，用于控制机械臂的末端姿态。
   - **主从臂系统**：如 *Gello*，实现高精度的力控遥操作。
   - **可穿戴设备**：如 *AirExo* 或 *UMI*，通过外骨骼或手部设备实现自然交互与示教。
-
 - **Sensors（传感器）**
 
   - **Camera（视觉）**：RGB / RGB-D 相机，如 RealSense、ZED、Azure Kinect。
   - **Force Sensor（力传感器）**：用于检测接触力矩，常安装于末端。
   - **Tactile Sensor（触觉传感器）**：如 GelSight、DIGIT，用于捕捉表面接触信息。
-
 - **Mocap System（动作捕捉系统）**
 
   用于精确追踪人体或机器人位姿，常用于收集示教数据或标定
