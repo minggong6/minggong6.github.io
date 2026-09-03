@@ -1,11 +1,10 @@
 ---
-title: "实习小记"
+title: "How to Get Started with Embodied AI Research"
 date: 2026-08-01
 tags: [思考]
 ---
-## How to Get Started with Embodied AI Research
 
-> 转载时间：2025-11-13
+> 转载时间：2026.8.
 
 © PKU EPIC Lab. All rights reserved. Commercial distribution prohibited.
 © PKU EPIC Lab. 版权所有。禁止商业传播。
