@@ -13,7 +13,17 @@ import requests
 from notion_client import Client
 
 NOTION_TOKEN = os.environ["NOTION_TOKEN"]
-PAGE_ID = os.environ.get("NOTION_PAGE_ID", "3c86c74e-657a-8054a134e507933557de")
+
+
+def _normalize_uuid(s):
+    # Rebuild to strict 8-4-4-4-12 regardless of input dashes (API rejects anything else).
+    h = re.sub(r"[^0-9a-fA-F]", "", s)
+    if len(h) != 32:
+        sys.exit(f"NOTION_PAGE_ID is not a valid page id: {s!r}")
+    return f"{h[:8]}-{h[8:12]}-{h[12:16]}-{h[16:20]}-{h[20:]}"
+
+
+PAGE_ID = _normalize_uuid(os.environ.get("NOTION_PAGE_ID", "3c86c74e657a8054a134e507933557de"))
 TAGS_ENV = [t.strip() for t in os.environ.get("POST_TAGS", "").split(",") if t.strip()]
 POSTS_DIR = Path("_posts")
 ASSET_DIR = Path("assets/notion")
